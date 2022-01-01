@@ -1,43 +1,14 @@
-# Стартовая сборка React TS.
+# PetBlog FullStack Project.
 
-- typescript
+## Stack Client
+
+- react, typescript
 - redux, redux thunk, redux devtools
-- react router dom
-- sass
 - material UI
-- classnames
-- normalize.css
-- axios
-- eslint, stylelint, prettier
-- husky
--
 
-## Layout
+## Stack server
 
-- layout (header, body, footer)
+[PetBlog-server](https://github.com/basalaevanton/PetBlog-server)
 
-## Hooks
-
-- useScrollY
-- useAction & use TypedSelector (for redux)
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm run start`
-
-старт dev разработки
-
-### `git commit -m "..."`
-
-npm run build
-npm run stylelint
-npm run git add
-npm run git push
-npm run prettier
-
-### `npm run debug`
-
-Debug с помощью vsCode
-После запуска нажать 'F5'
+- nestJs, typescript
+- Swagger
