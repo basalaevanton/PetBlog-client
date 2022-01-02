@@ -1,4 +1,3 @@
-import { EmptyObject } from "redux";
 import { IPost, IPostId } from "../../../interfaces/post.interface";
 
 export interface PostState {

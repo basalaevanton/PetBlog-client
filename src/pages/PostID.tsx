@@ -1,20 +1,10 @@
 import React, { useEffect } from "react";
 import { withLayout } from "../layout/Layout";
 
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useTypedSelector, useActions } from "../hooks";
-import { CardPost } from "../components";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useInput } from "../hooks/useInput";
 
 const PostID = () => {
@@ -24,11 +14,8 @@ const PostID = () => {
   const { setTodoPage, fetchPosts, fetchPostID } = useActions();
 
   const { id } = useParams();
-  // console.log(id);
-  // console.log(postId);
 
   const user = useInput("");
-
   const text = useInput("");
 
   useEffect(() => {
@@ -45,6 +32,7 @@ const PostID = () => {
     const formData = {
       username: user.value,
       text: text.value,
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       postId: id!,
     };
 
@@ -54,6 +42,10 @@ const PostID = () => {
       .post("http://localhost:5000/comments", formData)
       .catch((e) => console.log(e));
   };
+
+  if (loading) {
+    return <Typography>LOADING....</Typography>;
+  }
 
   return (
     <div>

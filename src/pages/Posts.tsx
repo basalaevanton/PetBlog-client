@@ -1,18 +1,11 @@
 import React, { useEffect } from "react";
 import { withLayout } from "../layout/Layout";
 
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTypedSelector, useActions } from "../hooks";
 import { CardPost } from "../components";
 import axios from "axios";
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Posts = () => {
   const { posts, loading, error, page, limit } = useTypedSelector(
@@ -34,8 +27,11 @@ const Posts = () => {
     navigate(`/post/${id}`, { replace: true });
   };
 
+  if (loading) {
+    return <Typography>LOADING....</Typography>;
+  }
   return (
-    <div>
+    <>
       {posts.map(({ _id, user, title, text, date }) => (
         <CardPost
           key={_id}
@@ -47,7 +43,7 @@ const Posts = () => {
           postIdPage={() => redirectToPostId(_id)}
         />
       ))}
-    </div>
+    </>
   );
 };
 

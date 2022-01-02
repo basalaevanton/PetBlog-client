@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withLayout } from "../layout/Layout";
 
-import { Button, Grid, TextField, Typography } from "@mui/material";
-import { useTypedSelector, useActions } from "../hooks";
+import { Typography } from "@mui/material";
+
 import axios from "axios";
 import { useInput } from "../hooks/useInput";
 import { AddNewPost } from "../components";

@@ -18,7 +18,7 @@ const App = function (): JSX.Element {
       <Routes>
         <Route path="/post/:id" element={<PostID />} />
         <Route path="/posts" element={<Posts />} />
-        <Route path="addPost" element={<AddPost />} />
+        <Route path="/addPost" element={<AddPost />} />
       </Routes>
     </>
   );
