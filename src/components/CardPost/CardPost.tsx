@@ -15,6 +15,7 @@ export const CardPost = ({
   user,
   date,
   text,
+  postIdPage,
   deletePost,
 }: CardPostProps): JSX.Element => {
   return (
@@ -37,7 +38,9 @@ export const CardPost = ({
       </CardContent>
 
       <CardActions>
-        <Button size="small">Оставить комментарий</Button>
+        <Button size="small" onClick={postIdPage}>
+          Оставить комментарий
+        </Button>
         <Button size="small" onClick={deletePost}>
           Удалить пост
         </Button>

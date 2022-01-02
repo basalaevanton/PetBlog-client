@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 // import { useRoutes } from 'react-router-dom';
 
 import AddPost from "./pages/AddPost";
+import PostID from "./pages/PostID";
 import Posts from "./pages/Posts";
 
 const App = function (): JSX.Element {
@@ -15,7 +16,8 @@ const App = function (): JSX.Element {
     <>
       {/* {routing} */}
       <Routes>
-        <Route path="/" element={<Posts />} />
+        <Route path="/post/:id" element={<PostID />} />
+        <Route path="/posts" element={<Posts />} />
         <Route path="addPost" element={<AddPost />} />
       </Routes>
     </>

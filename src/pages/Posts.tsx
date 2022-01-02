@@ -12,13 +12,15 @@ import {
 import { useTypedSelector, useActions } from "../hooks";
 import { CardPost } from "../components";
 import axios from "axios";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const Posts = () => {
   const { posts, loading, error, page, limit } = useTypedSelector(
     (state) => state.PostReducer
   );
   const { setTodoPage, fetchPosts } = useActions();
-  console.log(posts);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPosts(page, limit);
@@ -26,6 +28,10 @@ const Posts = () => {
 
   const deletePost = async (id: string) => {
     await axios.delete(`http://localhost:5000/posts/${id}`);
+  };
+
+  const redirectToPostId = (id: string) => {
+    navigate(`/post/${id}`, { replace: true });
   };
 
   return (
@@ -38,6 +44,7 @@ const Posts = () => {
           text={text}
           date={date}
           deletePost={() => deletePost(_id)}
+          postIdPage={() => redirectToPostId(_id)}
         />
       ))}
     </div>

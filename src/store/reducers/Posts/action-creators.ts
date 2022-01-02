@@ -24,6 +24,27 @@ export const fetchPosts = (page: number, limit: number) => {
     }
   };
 };
+
 export function setTodoPage(page: number): PostAction {
   return { type: PostActionTypes.SET_POST_PAGE, payload: page };
 }
+
+export const fetchPostID = (id: any) => {
+  return async (dispatch: Dispatch<PostAction>) => {
+    try {
+      dispatch({ type: PostActionTypes.FETCH_POST });
+      const response = await axios.get(`http://localhost:5000/posts/${id}`);
+      setTimeout(() => {
+        dispatch({
+          type: PostActionTypes.FETCH_POSTID_SUCCESS,
+          payload: response.data,
+        });
+      }, 500);
+    } catch (e) {
+      dispatch({
+        type: PostActionTypes.FETCH_POST_ERROR,
+        payload: "Произошла ошибка при загрузке поста",
+      });
+    }
+  };
+};

@@ -1,9 +1,24 @@
-export interface IPost {
+export interface Post {
   _id: string;
-  comments: string[];
   likes: number;
-  date: string;
+  date: Date;
   title: string;
   text: string;
   user: string;
+}
+
+export interface IPost extends Post {
+  comments: string[];
+}
+
+export interface Comment {
+  _id: string;
+  likes: number;
+  text: string;
+  username: string;
+  __v: number;
+}
+
+export interface IPostId extends Post {
+  comments: Comment[];
 }
