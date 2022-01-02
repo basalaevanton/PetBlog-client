@@ -25,6 +25,21 @@ export const PostReducer = (
       return { ...state, loading: false, error: action.payload };
     case PostActionTypes.SET_POST_PAGE:
       return { ...state, page: action.payload };
+    case PostActionTypes.DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((item) => item._id !== action.payload),
+      };
+    case PostActionTypes.DELETE_COMMENT:
+      return {
+        ...state,
+        postId: {
+          ...state.postId,
+          comments: state.postId.comments.filter(
+            (item) => item._id !== action.payload
+          ),
+        },
+      };
     default:
       return state;
   }

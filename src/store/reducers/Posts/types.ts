@@ -15,6 +15,8 @@ export enum PostActionTypes {
   FETCH_POSTID_SUCCESS = "FETCH_POSTID_SUCCESS",
   FETCH_POST_ERROR = "FETCH_POST_ERROR",
   SET_POST_PAGE = "SET_POST_PAGE",
+  DELETE_POST = "DELETE_POST",
+  DELETE_COMMENT = "DELETE_COMMENT",
 }
 interface FetchPostAction {
   type: PostActionTypes.FETCH_POST;
@@ -23,10 +25,7 @@ interface FetchPostSuccessAction {
   type: PostActionTypes.FETCH_POST_SUCCESS;
   payload: IPost[];
 }
-interface FetchPostIdSuccessAction {
-  type: PostActionTypes.FETCH_POSTID_SUCCESS;
-  payload: IPostId;
-}
+
 interface FetchPostErrorAction {
   type: PostActionTypes.FETCH_POST_ERROR;
   payload: string;
@@ -36,9 +35,24 @@ interface SetPostPage {
   payload: number;
 }
 
+interface FetchPostIdSuccessAction {
+  type: PostActionTypes.FETCH_POSTID_SUCCESS;
+  payload: IPostId;
+}
+interface DeletePostAction {
+  type: PostActionTypes.DELETE_POST;
+  payload: string;
+}
+interface DeleteCommentAction {
+  type: PostActionTypes.DELETE_COMMENT;
+  payload: string;
+}
+
 export type PostAction =
   | FetchPostAction
   | FetchPostErrorAction
   | FetchPostSuccessAction
+  | SetPostPage
   | FetchPostIdSuccessAction
-  | SetPostPage;
+  | DeletePostAction
+  | DeleteCommentAction;

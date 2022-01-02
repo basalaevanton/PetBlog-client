@@ -11,17 +11,13 @@ const Posts = () => {
   const { posts, loading, error, page, limit } = useTypedSelector(
     (state) => state.PostReducer
   );
-  const { setTodoPage, fetchPosts } = useActions();
+  const { setTodoPage, fetchPosts, deletePost } = useActions();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchPosts(page, limit);
   }, []);
-
-  const deletePost = async (id: string) => {
-    await axios.delete(`http://localhost:5000/posts/${id}`);
-  };
 
   const redirectToPostId = (id: string) => {
     navigate(`/post/${id}`, { replace: true });

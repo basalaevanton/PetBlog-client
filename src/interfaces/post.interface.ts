@@ -22,3 +22,9 @@ export interface Comment {
 export interface IPostId extends Post {
   comments: Comment[];
 }
+
+export interface AddComment {
+  id: string;
+  text: string;
+  username: string;
+}

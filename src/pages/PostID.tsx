@@ -11,7 +11,7 @@ const PostID = () => {
   const { posts, postId, loading, error, page, limit } = useTypedSelector(
     (state) => state.PostReducer
   );
-  const { setTodoPage, fetchPosts, fetchPostID } = useActions();
+  const { deleteComment, addComment, fetchPostID } = useActions();
 
   const { id } = useParams();
 
@@ -22,25 +22,13 @@ const PostID = () => {
     fetchPostID(id);
   }, []);
 
-  const deleteComment = async (id: string) => {
-    await axios.delete(`http://localhost:5000/comments/${id}`);
-  };
-
   const postComment = async () => {
-    console.log(id);
-
-    const formData = {
+    addComment({
       username: user.value,
       text: text.value,
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      postId: id!,
-    };
-
-    console.log(formData);
-
-    await axios
-      .post("http://localhost:5000/comments", formData)
-      .catch((e) => console.log(e));
+      id: id!,
+    });
   };
 
   if (loading) {
