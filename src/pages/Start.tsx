@@ -1,15 +1,22 @@
 import React, { useEffect } from "react";
 import { withLayout } from "../layout/Layout";
 
-import { Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@mui/material";
 import { useTypedSelector, useActions } from "../hooks";
+import { CardPost } from "../components";
 
 const Start = () => {
   const { posts, loading, error, page, limit } = useTypedSelector(
     (state) => state.PostReducer
   );
   const { setTodoPage, fetchPosts } = useActions();
-
   console.log(posts);
 
   useEffect(() => {
@@ -18,10 +25,8 @@ const Start = () => {
 
   return (
     <div>
-      {posts.map((item) => (
-        <Typography key={item._id} variant="h5" component="div">
-          {item.text} {item.date}
-        </Typography>
+      {posts.map(({ _id, user, title, text, date }) => (
+        <CardPost key={_id} user={user} title={title} text={text} date={date} />
       ))}
     </div>
   );
