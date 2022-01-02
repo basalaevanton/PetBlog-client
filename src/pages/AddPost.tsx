@@ -18,7 +18,7 @@ const AddPost = () => {
     text: string;
   }
 
-  const postNewPost = () => {
+  const postNewPost = async () => {
     const formData: postNewPost = {
       user: user.value,
       title: title.value,
@@ -27,7 +27,7 @@ const AddPost = () => {
 
     console.log(formData);
 
-    axios
+    await axios
       .post("http://localhost:5000/posts", formData)
       .catch((e) => console.log(e));
   };

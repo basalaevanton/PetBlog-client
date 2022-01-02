@@ -15,6 +15,7 @@ export const CardPost = ({
   user,
   date,
   text,
+  deletePost,
 }: CardPostProps): JSX.Element => {
   return (
     <Card sx={{ minWidth: 275, margin: "15px" }}>
@@ -37,6 +38,9 @@ export const CardPost = ({
 
       <CardActions>
         <Button size="small">Оставить комментарий</Button>
+        <Button size="small" onClick={deletePost}>
+          Удалить пост
+        </Button>
       </CardActions>
     </Card>
   );

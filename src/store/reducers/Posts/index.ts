@@ -2,7 +2,7 @@ import { PostAction, PostActionTypes, PostState } from "./types";
 
 const initialState: PostState = {
   posts: [],
-  page: 1,
+  page: 0,
   error: null,
   limit: 10,
   loading: false,

@@ -10,12 +10,12 @@ export const fetchPosts = (page: number, limit: number) => {
       const response = await axios.get("http://localhost:5000/posts", {
         params: { offset: page, count: limit },
       });
-      // setTimeout(() => {
-      dispatch({
-        type: PostActionTypes.FETCH_POST_SUCCESS,
-        payload: response.data,
-      });
-      // }, 500);
+      setTimeout(() => {
+        dispatch({
+          type: PostActionTypes.FETCH_POST_SUCCESS,
+          payload: response.data,
+        });
+      }, 500);
     } catch (e) {
       dispatch({
         type: PostActionTypes.FETCH_POST_ERROR,
