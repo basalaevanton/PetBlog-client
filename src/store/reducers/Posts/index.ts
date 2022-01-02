@@ -1,8 +1,9 @@
+import { IPostId } from "../../../interfaces/post.interface";
 import { PostAction, PostActionTypes, PostState } from "./types";
 
 const initialState: PostState = {
   posts: [],
-  postId: {},
+  postId: {} as IPostId,
   page: 0,
   error: null,
   limit: 10,

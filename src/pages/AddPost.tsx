@@ -7,16 +7,16 @@ import axios from "axios";
 import { useInput } from "../hooks/useInput";
 import { AddNewPost } from "../components";
 
+export interface postNewPost {
+  user: string;
+  title: string;
+  text: string;
+}
+
 const AddPost = () => {
   const user = useInput("");
   const title = useInput("");
   const text = useInput("");
-
-  interface postNewPost {
-    user: string;
-    title: string;
-    text: string;
-  }
 
   const postNewPost = async () => {
     const formData: postNewPost = {

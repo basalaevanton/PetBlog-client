@@ -1,8 +1,9 @@
+import { EmptyObject } from "redux";
 import { IPost, IPostId } from "../../../interfaces/post.interface";
 
 export interface PostState {
   posts: IPost[];
-  postId: unknown | IPostId;
+  postId: IPostId;
   loading: boolean;
   error: null | string;
   page: number;
