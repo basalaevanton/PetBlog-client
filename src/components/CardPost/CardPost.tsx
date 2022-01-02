@@ -32,7 +32,7 @@ export const CardPost = ({
         </Box>
 
         <Typography variant="body1">{text}</Typography>
-        <Typography variant="body2">{user}</Typography>
+        <Typography variant="body2">Пост оставил: {user}</Typography>
       </CardContent>
 
       <CardActions>

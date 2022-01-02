@@ -4,8 +4,8 @@ import { Route, Routes } from "react-router-dom";
 // import routes from './routes';
 // import { useRoutes } from 'react-router-dom';
 
-import SecondPage from "./pages/SecondPage";
-import Start from "./pages/Start";
+import AddPost from "./pages/AddPost";
+import Posts from "./pages/Posts";
 
 const App = function (): JSX.Element {
   // const { isLoggedIn } = useSelector((state) => state.auth);
@@ -15,8 +15,8 @@ const App = function (): JSX.Element {
     <>
       {/* {routing} */}
       <Routes>
-        <Route path="/" element={<Start />} />
-        <Route path="second" element={<SecondPage />} />
+        <Route path="/" element={<Posts />} />
+        <Route path="addPost" element={<AddPost />} />
       </Routes>
     </>
   );

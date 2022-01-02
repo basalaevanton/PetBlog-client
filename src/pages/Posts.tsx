@@ -12,7 +12,7 @@ import {
 import { useTypedSelector, useActions } from "../hooks";
 import { CardPost } from "../components";
 
-const Start = () => {
+const Posts = () => {
   const { posts, loading, error, page, limit } = useTypedSelector(
     (state) => state.PostReducer
   );
@@ -32,4 +32,4 @@ const Start = () => {
   );
 };
 
-export default withLayout(Start);
+export default withLayout(Posts);
