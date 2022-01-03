@@ -38,6 +38,7 @@ const PostID = () => {
   return (
     <div>
       <Typography>{postId.text}</Typography>
+
       {postId?.comments?.map((comment) => (
         <div key={comment._id}>
           <Typography>{comment.text}</Typography>
@@ -46,6 +47,7 @@ const PostID = () => {
           </Button>
         </div>
       ))}
+
       <Typography>Добавить комментарий к посту</Typography>
       <Grid container direction={"column"} style={{ padding: 20 }}>
         <TextField {...user} style={{ marginTop: 10 }} label={"User"} />

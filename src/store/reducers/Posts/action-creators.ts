@@ -3,12 +3,13 @@ import axios from "axios";
 
 import { PostAction, PostActionTypes } from "./types";
 import { AddComment, Comment } from "../../../interfaces/post.interface";
+import { API } from "../../../helpers/api";
 
 export const fetchPosts = (page: number, limit: number) => {
   return async (dispatch: Dispatch<PostAction>) => {
     try {
       dispatch({ type: PostActionTypes.FETCH_POST });
-      const response = await axios.get("http://localhost:5000/posts", {
+      const response = await axios.get(`${API.HOST}posts`, {
         params: { offset: page, count: limit },
       });
       setTimeout(() => {
@@ -34,7 +35,7 @@ export const fetchPostID = (id: any) => {
   return async (dispatch: Dispatch<PostAction>) => {
     try {
       dispatch({ type: PostActionTypes.FETCH_POST });
-      const response = await axios.get(`http://localhost:5000/posts/${id}`);
+      const response = await axios.get(`${API.HOST}posts/${id}`);
       setTimeout(() => {
         dispatch({
           type: PostActionTypes.FETCH_POSTID_SUCCESS,
@@ -54,7 +55,7 @@ export const deletePost = (id: string) => {
   return async (dispatch: Dispatch<PostAction>) => {
     try {
       dispatch({ type: PostActionTypes.DELETE_POST, payload: id });
-      await axios.delete(`http://localhost:5000/posts/${id}`);
+      await axios.delete(`${API.HOST}posts/${id}`);
     } catch (e) {
       dispatch({
         type: PostActionTypes.FETCH_POST_ERROR,
@@ -72,10 +73,10 @@ export const addComment = ({ username, text, id }: AddComment) => {
         text: text,
         postId: id,
       };
-      await axios.post("http://localhost:5000/comments", formData);
+      await axios.post(`${API.HOST}comments`, formData);
 
       dispatch({ type: PostActionTypes.FETCH_POST });
-      const response = await axios.get(`http://localhost:5000/posts/${id}`);
+      const response = await axios.get(`${API.HOST}posts/${id}`);
 
       dispatch({
         type: PostActionTypes.FETCH_POSTID_SUCCESS,
@@ -94,7 +95,7 @@ export const deleteComment = (id: string) => {
   return async (dispatch: Dispatch<PostAction>) => {
     try {
       dispatch({ type: PostActionTypes.DELETE_COMMENT, payload: id });
-      await axios.delete(`http://localhost:5000/comments/${id}`);
+      await axios.delete(`${API.HOST}comments/${id}`);
     } catch (e) {
       dispatch({
         type: PostActionTypes.FETCH_POST_ERROR,

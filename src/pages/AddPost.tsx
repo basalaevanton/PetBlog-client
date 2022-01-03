@@ -6,6 +6,7 @@ import { Typography } from "@mui/material";
 import axios from "axios";
 import { useInput } from "../hooks/useInput";
 import { AddNewPost } from "../components";
+import { API } from "../helpers/api";
 
 export interface postNewPost {
   user: string;
@@ -25,11 +26,7 @@ const AddPost = () => {
       text: text.value,
     };
 
-    console.log(formData);
-
-    await axios
-      .post("http://localhost:5000/posts", formData)
-      .catch((e) => console.log(e));
+    await axios.post(`${API.HOST}posts`, formData).catch((e) => console.log(e));
   };
   return (
     <>
